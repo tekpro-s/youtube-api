@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Video;
+use App\Http\Requests\VideoStoreRequest;
 
 class VideosController extends Controller
 {
     public function index()
     {
-        $videos = Video::with('area', 'genre', 'likes')->get();
+        $videos = Video::with('genre', 'likes')->get();
 
         if ($videos) {
             return response()->json([
@@ -23,10 +24,7 @@ class VideosController extends Controller
 
     public function get($video_id)
     {
-        $video = Video::with(['area', 'genre', 'likes', 'comments' => function ($query) {
-            $query->orderBy('comments.created_at', 'desc');
-            $query->with('user:id,name');
-        }])->where('id', $video_id)->first();
+        $video = Video::with(['genre', 'likes', 'comments'])->where('id', $video_id)->first();
 
         if ($video) {
             return response()->json([

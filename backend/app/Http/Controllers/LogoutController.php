@@ -6,12 +6,8 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
-    public function post(RegistrationStoreRequest $request)
+    public function post(Request $request)
     {
-        $user = User::registration($request);
-        return response()->json([
-            'message' => 'User created successfully',
-            'data' => $user
-        ], 201);
+        return response()->json(['auth' => false], 200);
     }
 }

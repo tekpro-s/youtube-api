@@ -2,6 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\VideosController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LikesController;
 
 Route::prefix('v1')->group(function () {
     Route::post('/users/registration', [RegistrationController::class, 'post']);
