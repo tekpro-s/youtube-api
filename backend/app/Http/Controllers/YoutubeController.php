@@ -11,7 +11,7 @@ class YoutubeController extends Controller
     const MAX_SNIPPETS_COUNT = 50;
     const DEFAULT_ORDER_TYPE = 'viewCount';
 
-    public function getListByChannelId(string $channelId)
+    public function getListByChannelId(string $videoId)
     {
         // Googleへの接続情報のインスタンスを作成と設定
         $client = new Google_Client();
@@ -21,11 +21,12 @@ class YoutubeController extends Controller
         $youtube = new Google_Service_YouTube($client);
 
         // 必要情報を引数に持たせ、listSearchで検索して動画一覧を取得
-        $items = $youtube->search->listSearch('snippet', [
-            'channelId'  => $channelId,
-            'order'      => self::DEFAULT_ORDER_TYPE,
-            'maxResults' => self::MAX_SNIPPETS_COUNT,
-        ]);
+        $items = $youtube->videos->listVideos("snippet",array('id' => $videoId));
+        // $items = $youtube->search->listSearch('snippet', [
+        //     'channelId'  => $channelId,
+        //     'order'      => self::DEFAULT_ORDER_TYPE,
+        //     'maxResults' => self::MAX_SNIPPETS_COUNT,
+        // ]);
 
         // 連想配列だと扱いづらいのでcollection化して処理
         $snippets = collect($items->getItems())->pluck('snippet')->all();

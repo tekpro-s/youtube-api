@@ -23,9 +23,13 @@
             <div class="content__body">
                 @foreach ($snippets as $snippet)
                     <div class="content__body__videos">
+                        $snippet
                         <p>
-                            {{ $snippet->title }}
+                            {{ $snippet->title }}<br>
+                            {{ $snippet->description }}<br>
+                            {{ $snippet->thumbnails->high->url }}<br>
                         </p>
+                        <img src="$snippet->thumbnails->high->url" />
                     </div>
                 @endforeach
             </div>
