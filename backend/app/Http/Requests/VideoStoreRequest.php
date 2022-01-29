@@ -24,7 +24,8 @@ class VideoStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'video_id' => ['required'],
+            'video_name' => ['required'],
+            'video_title' => ['required'],
             'genre_id' => ['required'],
             'summary' => ['required'],
         ];

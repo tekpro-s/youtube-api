@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LikesController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\GenresController;
 
 Route::prefix('v1')->group(function () {
     Route::post('/users/registration', [RegistrationController::class, 'post']);
@@ -27,4 +29,9 @@ Route::prefix('v1')->group(function () {
     Route::get('/users/{user_id}/likes', [LikesController::class, 'get']);
 
     Route::get('/genres', [GenresController::class, 'index']);
+
+    Route::post('/videos/{video_id}/comments', [CommentsController::class, 'post']);
+    Route::put('/videos/{video_id}/comments', [CommentsController::class, 'put']);
+    Route::delete('/videos/{video_id}/comments', [CommentsController::class, 'delete']);
+    Route::get('/comments/{video_id}', [CommentsController::class, 'get']);
 });

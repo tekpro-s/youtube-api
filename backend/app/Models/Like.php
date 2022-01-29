@@ -26,4 +26,6 @@ class Like extends Model
         $like = Like::create($param);
         return $like;
     }
+
+
 }
