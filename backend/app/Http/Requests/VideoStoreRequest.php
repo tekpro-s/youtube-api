@@ -26,6 +26,7 @@ class VideoStoreRequest extends FormRequest
         return [
             'video_name' => ['required'],
             'video_title' => ['required'],
+            'user_id' => ['required'],
             'genre_id' => ['required'],
             'summary' => ['required'],
         ];

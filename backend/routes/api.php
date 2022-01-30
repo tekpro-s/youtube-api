@@ -22,6 +22,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/videos', [VideosController::class, 'post']);
     Route::get('/videos/{video_id}', [VideosController::class, 'get']);
     Route::put('/videos/{video_id}', [VideosController::class, 'put']);
+    Route::delete('/videos/{video_id}', [VideosController::class, 'delete']);
 
     Route::get('/likes', [LikesController::class, 'index']);
     Route::put('/videos/{video_id}/likes', [LikesController::class, 'put']);

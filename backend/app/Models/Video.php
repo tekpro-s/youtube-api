@@ -11,7 +11,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['video_name','video_title', 'genre_id', 'summary'];
+    protected $fillable = ['video_name','video_title', 'user_id', 'genre_id', 'summary'];
  
     public function genre()
     {
@@ -42,10 +42,11 @@ class Video extends Model
 
         // 動画タイトル取得
         $video_title = $items[0]->snippet->title;
-
+        \Log::info($video_title); // ログ出力
         $param = [
             "video_name" => $request->video_name,
             "video_title" => $video_title,
+            "user_id" => $request->user_id,
             "genre_id" => $request->genre_id,
             "summary" => $request->summary,
         ];
