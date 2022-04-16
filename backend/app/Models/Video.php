@@ -57,7 +57,7 @@ class Video extends Model
     public static function video_put($request, $id)
     {
         $param = [
-            "video_name" => $request->video_name,
+            "video_title" => $request->video_title,
             "genre_id" => $request->genre_id,
             "summary" => $request->summary,
         ];
